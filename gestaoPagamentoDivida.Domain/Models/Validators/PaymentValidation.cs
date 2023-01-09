@@ -13,7 +13,7 @@ namespace gestaoPagamentoDivida.Domain.Models.Validators
         public PaymentValidation()
         {
             RuleFor(payment => payment.Amount_payment).NotEmpty().GreaterThan(0).WithMessage("O valor deve ser maior que zero");
-            RuleFor(payment => payment.Payment_date).LessThan(DateTime.Now).WithMessage("Data Inválida");
+            RuleFor(payment => payment.Date_payment).LessThan(DateTime.Now).WithMessage("Data Inválida");
 
 
 

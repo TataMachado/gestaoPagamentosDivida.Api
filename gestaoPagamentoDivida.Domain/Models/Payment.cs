@@ -9,7 +9,12 @@ namespace gestaoPagamentoDivida.Domain.entity
 {
     public class Payment: Entity
     {
-        public double Amount_payment { get; set; }
-        public DateTime Payment_date { get; set; }
+        public decimal Amount_payment { get; set; }
+        public DateTime Date_payment { get; set; }
+
+        public Payment()
+        {
+
+        }
     }
 }
