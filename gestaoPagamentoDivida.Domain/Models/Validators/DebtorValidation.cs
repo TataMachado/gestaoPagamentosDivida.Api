@@ -14,7 +14,7 @@ using gestaoPagamentosDivida.Domain.Contracts;
 
 namespace gestaoPagamentoDivida.Domain.Models.Validators;
 
-public class DebtorValidation : AbstractValidator<DebtorRequest>
+public class DebtorValidation : AbstractValidator<DebtorContract>
 {
     public DebtorValidation()
     {

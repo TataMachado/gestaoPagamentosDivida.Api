@@ -19,6 +19,7 @@ namespace gestaoPagantoDivida.Repository.Mappings
             builder.Property(x => x.Amount).HasColumnType("double");
             builder.Property(x=>x.DueDate).HasColumnType("dateTime2(7)");
             builder.Property(x => x.CreationDate).HasColumnType("dateTime2(7)");
+            builder.HasOne(x => x.Debtor).WithOne(x=>x.Debt);
          
             
 

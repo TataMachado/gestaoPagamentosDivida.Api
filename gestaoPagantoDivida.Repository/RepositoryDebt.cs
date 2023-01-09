@@ -25,11 +25,7 @@ namespace gestaoPagantoDivida.Repository
             _sqlDatabaseContext = sqlDatabaseContext;
         }
 
-        //public Task ValidateAndThrowAsync(Debt debt, object debt1)
-       // {
-           // return _sqlDatabaseContext.AddRangeAsync(debt, debt1);
-       // }
-
+      
         List<Debt> IRepositoryDebt .GetAll()
         {
             return _sqlDatabaseContext.Debt.Include(x => x.Debtor).ToList();
@@ -45,9 +41,6 @@ namespace gestaoPagantoDivida.Repository
             return _sqlDatabaseContext.Debt.Where(x => x.Id == id).ToList();
         }
 
-        public Task ValidateAndThrowAsync(Debt debt, object debt1)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

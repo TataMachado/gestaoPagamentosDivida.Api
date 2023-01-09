@@ -1,7 +1,9 @@
 using FluentValidation;
 using gestaoPagamentoDivida.Domain.entitys;
+using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
+using gestaoPagamentosDivida.Domain.Contracts;
 using Microsoft.AspNetCore.Mvc;
 namespace gestãoPagamentosDívida.Api.Controllers;
 
@@ -51,17 +53,17 @@ public class DebtController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult> CriandoDebt([FromBody] Debt debt)
+    public async Task<ActionResult> CriandoDebt([FromBody] DebtContract debtRequest)
     {
         
         
-       var validationResult = new DebtValidation().ValidateAndThrowAsync( debt );
+ 
         Debt debt1 = new Debt();
-        debt1.Amount = debt1.Amount;
+        debt1.Amount = debtRequest.Amount;
         debt1.CreationDate = DateTime.Now;
-        debt1.Debtor.Name = debt1.Debtor.Name;
-        debt1.Debtor.Document = debt1.Debtor.Document;
+        debt1.Debtor= new Debtor(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
         debt1.DueDate = debt1.DueDate;
+        //var validationResult = new DebtValidation().ValidateAndThrowAsync(debt1);
         repositoryDebt.Add(debt1);
             return Ok(debt1);
 

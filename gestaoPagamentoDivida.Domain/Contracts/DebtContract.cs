@@ -8,21 +8,14 @@ namespace gestaoPagamentosDivida.Domain.Contracts
     {
         public decimal Amount { get; set; }
        
-       public Debt debt;
+       public DebtorContract Debtor { get; set; }
 
-        public DebtContract(Debt debt)
-        {
-            debt = debt;
-        }
+        
 
-        public DateTime CreationDate { get; set; }
+        
         public DateTime DueDate { get; set; }
 
-        public Guid Id { get; set; }
-        public DebtContract()
-       {
-
-        }
+       
     
     }
 }

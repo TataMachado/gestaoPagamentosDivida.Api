@@ -20,9 +20,8 @@ public class DebtValidation : AbstractValidator<gestaoPagamentosDivida.Domain.Co
     public DebtValidation()
     {
         RuleFor(debt => debt.Amount).NotEmpty().GreaterThan(0).WithMessage("O valor deve ser maior que zero");
-        RuleFor(debt => debt.debt.Debtor.Name).Empty().WithMessage("O nome não pode estar vázio ");
-        RuleFor(debt => debt.debt.Debtor.Document).Empty().WithMessage("O documento não pode estar vázio ");
-        RuleFor(debt => debt.CreationDate).LessThan(DateTime.Now).WithMessage("Data Inválida");
+        RuleFor(debt => debt.Debtor.Name).Empty().WithMessage("O nome não pode estar vázio ");
+        RuleFor(debt => debt.Debtor.Document).Empty().WithMessage("O documento não pode estar vázio ");
         RuleFor(debt => debt.DueDate).LessThan(DateTime.Now).WithMessage("Data Inválida");
 
 
