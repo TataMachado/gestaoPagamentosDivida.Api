@@ -10,7 +10,7 @@ namespace gestaoPagamentoDivida.Domain.Models
 {
     public class Debtor: Entity
     {
-        public string DebtId { get; set; }
+        
         public string Name { get; set; }
         public string Document { get; set;}
         public Debt Debt { get; set; }

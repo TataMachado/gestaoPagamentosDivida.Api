@@ -36,6 +36,11 @@ namespace gestaoPagantoDivida.Repository
             return sqlDatabaseContext.Set<TEntity>().ToList();
         }
 
+        public IEnumerable<TEntity> GetAllDebitsId(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Remove(TEntity obj)
         {
             try

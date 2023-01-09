@@ -11,7 +11,7 @@ namespace gestaoPagamentosDivida.Api.Requests
 
         public DebtorRequest Debtor { get; set; }
         public DateTime CreationDate { get; set; }
-        public string DueDate { get; set; }
+        public DateTime DueDate { get; set; }
         
         public Guid Id { get; set; }
 

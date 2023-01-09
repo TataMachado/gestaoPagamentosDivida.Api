@@ -14,12 +14,13 @@ using gestaoPagamentosDivida.Domain.Contracts;
 
 namespace gestaoPagamentoDivida.Domain.Models.Validators;
 
-public class DebtorValidation : AbstractValidator<DebtorContract>
+public class DebtorValidation : AbstractValidator<DebtorRequest>
 {
     public DebtorValidation()
     {
         RuleFor(debtor => debtor.Name).NotEmpty().MinimumLength(3).WithMessage("O nome não pode ser nulo");
         RuleFor(debtor => debtor.Document).NotEmpty().MinimumLength(3).WithMessage("O nome não pode ser nulo");
+        
 
 
 

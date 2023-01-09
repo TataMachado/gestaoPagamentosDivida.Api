@@ -14,6 +14,9 @@ namespace gestaoPagamentosDivida.Api.Requests
         
         public string Name { get; set; }
         public string Document { get; set; }
+       // public Debt debt { get; set; }
+
+        public DebtorRequest() { }
       
 
     }

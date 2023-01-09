@@ -1,13 +1,8 @@
 using FluentValidation;
 using gestaoPagamentoDivida.Domain.entitys;
-using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
-using gestaoPagamentosDivida.Domain.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-
 namespace gestãoPagamentosDívida.Api.Controllers;
 
 [ApiController]
@@ -34,21 +29,23 @@ public class DebtController : ControllerBase
         return Ok(Result);
 
     }
-    [HttpGet("Id")]
-    public async Task<ActionResult> IndexId(string Id)
-    {
+    [HttpGet("{Id}")]
+    public async Task<ActionResult> IndexId([FromRoute]Guid Id)
 
-        var Result = repositoryDebt.entityGet(Id);
+    {
+     
+
+        var Result = repositoryDebt.DeleteDebitsId(Id);
         return Ok(Result);
     }
 
 
 
     [HttpDelete("/Debt/{Id}")]
-    public async Task<ActionResult> Deletar( [FromRoute] string id)
+    public async Task<ActionResult> Deletar( [FromRoute] Guid Id)
     {
-
-        return Ok();
+        var result = repositoryDebt.DeleteDebitsId(Id);
+        return Ok(result);
         
 
     }
@@ -58,11 +55,15 @@ public class DebtController : ControllerBase
     {
         
         
-            //var validationResult = new DebtValidation().ValidateAndThrowAsync(contract );
-            
-
-             repositoryDebt.Add(debt);
-            return Ok(debt);
+       var validationResult = new DebtValidation().ValidateAndThrowAsync( debt );
+        Debt debt1 = new Debt();
+        debt1.Amount = debt1.Amount;
+        debt1.CreationDate = DateTime.Now;
+        debt1.Debtor.Name = debt1.Debtor.Name;
+        debt1.Debtor.Document = debt1.Debtor.Document;
+        debt1.DueDate = debt1.DueDate;
+        repositoryDebt.Add(debt1);
+            return Ok(debt1);
 
 
         

@@ -1,4 +1,5 @@
-﻿using gestaoPagamentoDivida.Domain.Models;
+﻿using gestaoPagamentoDivida.Domain.entitys;
+using gestaoPagamentoDivida.Domain.Models;
 
 namespace gestaoPagamentosDivida.Domain.Contracts
 
@@ -7,10 +8,19 @@ namespace gestaoPagamentosDivida.Domain.Contracts
     {
         public decimal Amount { get; set; }
        
-        public DebtorContract Debtor;
-        public DateTime DueDate { get; set; }
-        public DebtContract()
+       public Debt debt;
+
+        public DebtContract(Debt debt)
         {
+            debt = debt;
+        }
+
+        public DateTime CreationDate { get; set; }
+        public DateTime DueDate { get; set; }
+
+        public Guid Id { get; set; }
+        public DebtContract()
+       {
 
         }
     

@@ -15,11 +15,14 @@ using gestaoPagamentosDivida.Domain.Contracts;
 
 namespace gestaoPagamentoDivida.Domain.Models.Validators;
 
-public class DebtValidation : AbstractValidator<DebtContract>
+public class DebtValidation : AbstractValidator<gestaoPagamentosDivida.Domain.Contracts.DebtContract>
 {
     public DebtValidation()
     {
         RuleFor(debt => debt.Amount).NotEmpty().GreaterThan(0).WithMessage("O valor deve ser maior que zero");
+        RuleFor(debt => debt.debt.Debtor.Name).Empty().WithMessage("O nome não pode estar vázio ");
+        RuleFor(debt => debt.debt.Debtor.Document).Empty().WithMessage("O documento não pode estar vázio ");
+        RuleFor(debt => debt.CreationDate).LessThan(DateTime.Now).WithMessage("Data Inválida");
         RuleFor(debt => debt.DueDate).LessThan(DateTime.Now).WithMessage("Data Inválida");
 
 
@@ -29,9 +32,9 @@ public class DebtValidation : AbstractValidator<DebtContract>
 
     }
 
-    public object ValidateAndThrowAsync(object debt)
-    {
-        throw new NotImplementedException();
+    public object ValidateAndThrowAsync(Debt debt1)
+   {
+       throw new NotImplementedException();
     }
 }
 
