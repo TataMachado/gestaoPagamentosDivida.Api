@@ -1,4 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.entitys;
 using gestaoPagamentoDivida.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

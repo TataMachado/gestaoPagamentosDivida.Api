@@ -15,6 +15,10 @@ namespace gestaoPagamentoDivida.Domain.Models.Validators
         {
             RuleFor(payment => payment.Amount_payment).NotEmpty().GreaterThan(0).WithMessage("O valor deve ser maior que zero");
             RuleFor(payment => payment.Date_payment).LessThan(DateTime.Now).WithMessage("Data Inválida");
+            
+          
+
+
 
 
 

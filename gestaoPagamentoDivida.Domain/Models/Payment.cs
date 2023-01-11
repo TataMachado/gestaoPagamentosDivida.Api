@@ -1,5 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.Models;
-
+using System.Text.Json.Serialization;
 
 namespace gestaoPagamentoDivida.Domain.entity
 {
@@ -7,16 +7,17 @@ namespace gestaoPagamentoDivida.Domain.entity
     {
         public decimal Amount_payment { get; set; }
         public DateTime Date_payment { get; set; }
-        public Debtor Debtor { get; set; }  
+        [JsonIgnore]
+        public Debtor Debtor { get; set; } 
         public Payment()
         {
 
         }
-        public Payment(decimal amount_payment, DateTime date_payment, Debtor debtor)
+        public Payment(decimal amount_payment, DateTime date_payment)
         {
             Amount_payment = amount_payment;
             Date_payment = date_payment;
-            Debtor = debtor;
+           
         }
     }
 }

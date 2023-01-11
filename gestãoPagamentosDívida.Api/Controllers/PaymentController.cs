@@ -29,12 +29,13 @@ namespace gestaoPagamentosDivida.Api.Controllers
             return Ok(result);
         }
        [HttpPost]
-        public async Task<ActionResult> CriandoPayment([FromBody] PaymentContract paymentRequst)
+        public async Task<ActionResult> CriandoPayment([FromBody] Payment paymentRequst)
         {
             Payment payment1=new Payment();
-            payment1.Amount_payment = paymentRequst.Amount_payment;
-            payment1.Date_payment = paymentRequst.Date_payment;
-           // var validationResult = new PaymentValidation().ValidateAndThrowAsync(paymentRequst);
+          
+            payment1.Debtor.Payment.Amount_payment= paymentRequst.Amount_payment;
+            payment1.Debtor.Payment.Date_payment= paymentRequst.Date_payment;
+            var validationResult = new PaymentValidation().ValidateAndThrowAsync(paymentRequst);
             repositoryPayment.Add(payment1);
             return Ok(payment1);
         }

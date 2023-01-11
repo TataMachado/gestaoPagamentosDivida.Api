@@ -1,4 +1,5 @@
-﻿using gestaoPagamentoDivida.Domain.entitys;
+﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.entitys;
 using gestaoPagamentoDivida.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace gestaoPagamentosDivida.Api.Requests
         
         public string Name { get; set; }
         public string Document { get; set; }
-       // public Debt debt { get; set; }
+        public PaymentRequest Payment { get; set; }
 
         public DebtorRequest() { }
       

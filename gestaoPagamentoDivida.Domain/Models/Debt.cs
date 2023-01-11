@@ -2,6 +2,7 @@
 using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagamentosDivida.Domain.Contracts
     ;
+using System.Text.Json.Serialization;
 
 namespace gestaoPagamentoDivida.Domain.entitys
 {
@@ -12,6 +13,7 @@ namespace gestaoPagamentoDivida.Domain.entitys
         public DateTime DueDate { get; set; }
         public Models.Debtor Debtor { get; set; }
         public DateTime CreationDate { get; set; }
+        [JsonIgnore]
         public Payment Payment { get; set; }
       
           
