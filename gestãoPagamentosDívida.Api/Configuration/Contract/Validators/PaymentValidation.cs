@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using gestaoPagamentoDivida.Domain.Contracts;
 using gestaoPagamentoDivida.Domain.entity;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace gestaoPagamentoDivida.Domain.Models.Validators
 {
-    public class PaymentValidation: AbstractValidator<Payment>
+    public class PaymentValidation: AbstractValidator<PaymentContract>
     {
         public PaymentValidation()
         {

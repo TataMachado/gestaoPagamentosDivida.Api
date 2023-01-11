@@ -13,8 +13,9 @@ namespace gestaoPagamentoDivida.Domain.Contracts
     {
         public decimal Amount_payment { get; set; } 
         public DateTime Date_payment { get; set; }
-        [JsonIgnore]
-        public Debtor Debtor { get; set; }
+        DebtContract Debt { get; set; } 
+       
+        
 
     }
 }

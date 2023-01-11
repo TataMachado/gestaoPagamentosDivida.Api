@@ -14,7 +14,7 @@ namespace gestaoPagamentoDivida.Domain.entitys
         public Models.Debtor Debtor { get; set; }
         public DateTime CreationDate { get; set; }
         [JsonIgnore]
-        public Payment Payment { get; set; }
+        public List<Payment> Payments { get; set; }
       
           
        
@@ -29,6 +29,10 @@ namespace gestaoPagamentoDivida.Domain.entitys
             DueDate= dueDate;   
             debtor = debtor; 
             
+        }
+        public decimal CalcularDivida(decimal Amount_payment)
+        {
+            return Amount-=Amount_payment;
         }
        
     }
