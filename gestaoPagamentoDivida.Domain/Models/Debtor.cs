@@ -1,4 +1,5 @@
-﻿using gestaoPagamentoDivida.Domain.entitys;
+﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.entitys;
 using gestaoPagamentosDivida.Domain.Contracts;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,22 @@ namespace gestaoPagamentoDivida.Domain.Models
         public string Document { get; set;}
         [JsonIgnore]
         public Debt Debt { get; set; }
-        
+        [JsonIgnore]
+        public Payment Payment { get; set; }
+
+
+
         public Debtor()
         {
 
         }
-
+       
 
         public Debtor(string name, string document) { 
             Name = name;    
             Document = document;
+            
+            
             
 
         }

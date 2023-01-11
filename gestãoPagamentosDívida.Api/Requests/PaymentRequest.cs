@@ -1,4 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.Models;
 
 namespace gestaoPagamentosDivida.Api.Requests
 {
@@ -6,6 +7,10 @@ namespace gestaoPagamentosDivida.Api.Requests
     {
         public decimal Amount_payment { get; set; }
         public DateTime Date_payment { get; set; }
-
+        public Guid Id { get; set; }
+        public PaymentRequest()
+        {
+            Id= Guid.NewGuid();
+        }
     }
 }

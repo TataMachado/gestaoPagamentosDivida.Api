@@ -1,4 +1,5 @@
-﻿using gestaoPagamentoDivida.Domain.entitys;
+﻿using gestaoPagamentoDivida.Domain.Contracts;
+using gestaoPagamentoDivida.Domain.entitys;
 using gestaoPagamentoDivida.Domain.Models;
 
 namespace gestaoPagamentosDivida.Domain.Contracts
@@ -9,6 +10,7 @@ namespace gestaoPagamentosDivida.Domain.Contracts
         public decimal Amount { get; set; }
        
        public DebtorContract Debtor { get; set; }
+        public PaymentContract Payment { get; set; }
 
         
 

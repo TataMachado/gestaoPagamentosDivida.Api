@@ -63,7 +63,7 @@ public class DebtController : ControllerBase
         debt1.CreationDate = DateTime.Now;
         debt1.Debtor= new Debtor(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
         debt1.DueDate = debt1.DueDate;
-        var validationResult = new DebtValidation().ValidateAndThrowAsync(debt1);
+        var validationResult = new DebtValidation().ValidateAndThrowAsync(debtRequest);
         repositoryDebt.Add(debt1);
             return Ok(debt1);
 

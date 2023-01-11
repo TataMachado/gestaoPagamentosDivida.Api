@@ -1,7 +1,5 @@
 
 using FluentValidation;
-using gestaoPagamentoDivida.Domain.entitys;
-using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
 using gestaoPagantoDivida.Repository;
@@ -18,6 +16,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SqlDatabaseContext>(opt=>opt.UseInMemoryDatabase("gestaoPagamentos"));
 builder.Services.AddScoped<IValidator<gestaoPagamentoDivida.Domain.Models.Debtor>, DebtorValidation>();
+
 builder.Services.AddScoped<IRepositoryDebt, RepositoryDebt>();
 builder.Services.AddScoped<IRepositoryDebtor, RepositoryDebtor>();
 builder.Services.AddScoped<IRepositoryPayment, RepositoryPayment>();

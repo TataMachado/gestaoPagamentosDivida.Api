@@ -3,6 +3,7 @@ using gestaoPagamentoDivida.Domain.Contracts;
 using gestaoPagamentoDivida.Domain.entity;
 using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
+using gestaoPagamentosDivida.Api.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gestaoPagamentosDivida.Api.Controllers
@@ -21,19 +22,19 @@ namespace gestaoPagamentosDivida.Api.Controllers
             var result = repositoryPayment.GetAll();
             return Ok(result);
         }
-        [HttpPost("/id")]
+        [HttpGet("/id")]
         public async  Task<ActionResult> IndexId(Guid Id)
         {
             var result = repositoryPayment.GetAllId(Id);
             return Ok(result);
         }
-        [HttpPost]
-        public async Task<AcceptedResult> CriandoPayment([FromBody] PaymentContract paymentRequst)
+       [HttpPost]
+        public async Task<ActionResult> CriandoPayment([FromBody] PaymentContract paymentRequst)
         {
             Payment payment1=new Payment();
             payment1.Amount_payment = paymentRequst.Amount_payment;
             payment1.Date_payment = paymentRequst.Date_payment;
-            var validationResult = new PaymentValidation().ValidateAndThrowAsync(payment1);
+           // var validationResult = new PaymentValidation().ValidateAndThrowAsync(paymentRequst);
             repositoryPayment.Add(payment1);
             return Ok(payment1);
         }
