@@ -10,7 +10,10 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
     public interface IRepositoryPayment : IRepositoryEntity<Payment>
     {
        
+       
         public List<Payment> GetAll();
-        public Payment GetAllId(Guid Id); 
+       public Payment GetAllId(Guid Id);
+ 
+
     }
 }

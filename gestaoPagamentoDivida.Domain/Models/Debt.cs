@@ -1,10 +1,8 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
 using gestaoPagamentoDivida.Domain.Models;
-using gestaoPagamentosDivida.Domain.Contracts
-    ;
 using System.Text.Json.Serialization;
 
-namespace gestaoPagamentoDivida.Domain.entitys
+namespace gestaoPagamentoDivida.Domain
 {
     public class Debt: Entity
     {

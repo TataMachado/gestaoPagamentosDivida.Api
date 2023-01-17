@@ -1,5 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
-using gestaoPagamentoDivida.Domain.entitys;
+using gestaoPagamentoDivida.Domain;
 using gestaoPagamentoDivida.Domain.Repository;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -22,23 +22,23 @@ namespace gestaoPagantoDivida.Repository
 
         {
 
-            _sqlDatabaseContext = sqlDatabaseContext;
+            this._sqlDatabaseContext = sqlDatabaseContext;
         }
 
       
         List<Debt> IRepositoryDebt .GetAll()
         {
-            return _sqlDatabaseContext.Debt.Include(x => x.Debtor).ToList();
+            return _sqlDatabaseContext.Debts.ToList();
         }
 
-       public IRepositoryDebt GetAll(Guid Id )
+       public Debt GetAll(Guid Id )
         {
-            return (IRepositoryDebt)_sqlDatabaseContext.Debt.Where(x => x.Id == Id).FirstOrDefault();
+            return _sqlDatabaseContext.Debts.FirstOrDefault(x => x.Id == Id);
         }
 
         public List<Debt> DeleteDebitsId(Guid id)
         {
-            return _sqlDatabaseContext.Debt.Where(x => x.Id == id).ToList();
+            return _sqlDatabaseContext.Debts.Where(x => x.Id == id).ToList();
         }
 
         

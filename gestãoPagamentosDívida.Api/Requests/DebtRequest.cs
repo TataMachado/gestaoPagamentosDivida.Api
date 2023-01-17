@@ -1,12 +1,13 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
 using gestaoPagamentoDivida.Domain.Models;
-
-
+using System.ComponentModel.DataAnnotations;
 
 namespace gestaoPagamentosDivida.Api.Requests
 {
     public class DebtRequest
     {
+
+        
         public decimal Amount { get; set; }
 
         public DebtorRequest Debtor { get; set; }

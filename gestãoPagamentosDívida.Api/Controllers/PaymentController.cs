@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
-using gestaoPagamentoDivida.Domain.Contracts;
 using gestaoPagamentoDivida.Domain.entity;
-using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
 using gestaoPagamentosDivida.Api.Requests;
+using gestaoPagamentosDivida.Api.Validator;
 using Microsoft.AspNetCore.Mvc;
 
 namespace gestaoPagamentosDivida.Api.Controllers
@@ -12,9 +11,11 @@ namespace gestaoPagamentosDivida.Api.Controllers
     [Route("/Payment")]
     public class PaymentController : ControllerBase
     {
-        private readonly IRepositoryPayment repositoryPayment;
-        public PaymentController(IRepositoryPayment repositoryPayment) {
+        private readonly IRepositoryPayment repositoryPayment; IRepositoryDebt repositoryDebt;
+        public PaymentController(IRepositoryPayment repositoryPayment, IRepositoryDebt repositoryDebt)
+        {
             this.repositoryPayment = repositoryPayment;
+            this.repositoryDebt = repositoryDebt;   
         }
         [HttpGet]
         public async Task<ActionResult> Index()
@@ -29,15 +30,19 @@ namespace gestaoPagamentosDivida.Api.Controllers
             return Ok(result);
         }
        [HttpPost]
-        public async Task<ActionResult> CriandoPayment([FromRoute]Guid Id,[FromBody] PaymentContract paymentRequst)
+        public async Task<ActionResult> CriandoPayment([FromRoute]Guid Id,[FromBody] PaymentRequest paymentRequset)
         {
             Payment payment1=new Payment();
           
-           payment1.Amount_payment = paymentRequst.Amount_payment;
-            var validationResult = new PaymentValidation().ValidateAndThrowAsync(paymentRequst);
-            payment1 = repositoryPayment.GetAllId(Id);
+           payment1.Amount_payment = paymentRequset.Amount_payment;
+
+            var resutValidation =new PaymentValidation().ValidateAndThrowAsync(paymentRequset);
+            var debtor = repositoryDebt.GetAll(Id);
+            payment1.Debt = debtor;
+             
             repositoryPayment.Add(payment1);
-            return Ok(payment1);
+         
+                return Ok(payment1);
         }
     
     }

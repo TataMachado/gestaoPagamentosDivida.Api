@@ -1,6 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
-using gestaoPagamentoDivida.Domain.entitys;
-using gestaoPagamentosDivida.Domain.Contracts;
+using gestaoPagamentoDivida.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

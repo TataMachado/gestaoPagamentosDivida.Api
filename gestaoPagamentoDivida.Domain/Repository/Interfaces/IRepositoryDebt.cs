@@ -1,4 +1,4 @@
-﻿using gestaoPagamentoDivida.Domain.entitys;
+﻿using gestaoPagamentoDivida.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +13,6 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
       //  Task ValidateAndThrowAsync(Debt debt, object debt1);
         List<Debt> GetAll();
         List<Debt> DeleteDebitsId(Guid id);
+        Debt GetAll(Guid Id);
     }
 }

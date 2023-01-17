@@ -1,10 +1,14 @@
 
 using FluentValidation;
-using gestaoPagamentoDivida.Domain.Models.Validators;
+using FluentValidation.AspNetCore;
+using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
+using gestaoPagamentosDivida.Api.Requests;
+using gestaoPagamentosDivida.Api.Validator;
 using gestaoPagantoDivida.Repository;
 using gestaoPagantoDivida.Repository.Mappings;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +19,32 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<SqlDatabaseContext>(opt=>opt.UseInMemoryDatabase("gestaoPagamentos"));
-builder.Services.AddScoped<IValidator<gestaoPagamentoDivida.Domain.Models.Debtor>, DebtorValidation>();
+
+    
+void ConfigureServices(IServiceCollection services)
+{
+    services.AddMvc();
+
+   //builder.Services.AddScoped<IValidator<gestaoPagamentoDivida.Domain.Models.Debtor>, DebtorValidation>();
+    builder.Services.AddControllers().AddFluentValidation();
+    // builder.Services.AddTransient<IValidator <gestaoPagamentoDivida.Domain.Debt>,DebtContract>();
+
+    
+    builder.Services.AddScoped<IValidator<PaymentRequest>,PaymentValidation> ();
+    builder.Services.AddTransient<IValidator< DebtRequest >,DebtValidation> ();
+
+
+  
+
+
+
+
+   // services.AddValidatorsFromAssemblyContaining<DebtorValidation>();
+    //services.AddValidatorsFromAssemblyContaining<PaymentValidation>();
+    //services.AddValidatorsFromAssemblyContaining<gestaoPagamentoDivida.Domain.Models.Validators.DebtValidation>();
+    
+
+}
 
 builder.Services.AddScoped<IRepositoryDebt, RepositoryDebt>();
 builder.Services.AddScoped<IRepositoryDebtor, RepositoryDebtor>();

@@ -27,5 +27,6 @@ namespace gestaoPagantoDivida.Repository.Mappings
             return _sqlDatabaseContext.Payment.Where(x => x.Id == Id).FirstOrDefault();
         }
 
+    
     }
 }

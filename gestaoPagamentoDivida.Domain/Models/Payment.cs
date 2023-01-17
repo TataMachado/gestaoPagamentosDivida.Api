@@ -1,4 +1,4 @@
-﻿using gestaoPagamentoDivida.Domain.entitys;
+﻿using gestaoPagamentoDivida.Domain.entity;
 using gestaoPagamentoDivida.Domain.Models;
 using System.Text.Json.Serialization;
 
