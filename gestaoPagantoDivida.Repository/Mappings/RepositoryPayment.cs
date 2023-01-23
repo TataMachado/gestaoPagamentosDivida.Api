@@ -17,16 +17,24 @@ namespace gestaoPagantoDivida.Repository.Mappings
             this._sqlDatabaseContext = sqlDatabaseContext;
         }
 
-
         public List<Payment> GetAll()
         {
-            return _sqlDatabaseContext.Payment.ToList();
+            return _sqlDatabaseContext.Payment.ToList();     
+             
         }
       public  Payment GetAllId(Guid Id)
         {
             return _sqlDatabaseContext.Payment.Where(x => x.Id == Id).FirstOrDefault();
         }
+     public   Task<Payment> GetId(Guid Id)
+        {
+            return Task.FromResult(_sqlDatabaseContext.Payment.FirstOrDefault(x => x.Id == Id));
+        }
+        public Task<Payment> DeleteId(Guid Id) { 
+            return _sqlDatabaseContext.Payment.Where(x=>x.Id == Id).FirstOrDefaultAsync();
+        }
 
-    
+
+
     }
 }

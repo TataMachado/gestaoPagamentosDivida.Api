@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewFeatures.Buffers;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Numerics;
 
 namespace gestãoPagamentosDívida.Api.Controllers;
 
@@ -40,7 +41,7 @@ public class DebtController : ControllerBase
     [HttpGet("{Id}")]
     public async Task<ActionResult> IndexId([FromRoute] Guid Id)
     {
-        var Result = repositoryDebt.DeleteDebitsId(Id);
+        var Result = repositoryDebt.GetId(Id);
         
       
         return Ok(Result);
@@ -50,7 +51,7 @@ public class DebtController : ControllerBase
     [HttpDelete("/Debt/{Id}")]
     public async Task<ActionResult> Deletar([FromRoute] Guid Id)
     {
-        var result = repositoryDebt.DeleteDebitsId(Id);
+        var  result =  repositoryDebt.DeleteDebitsId(Id);
         return Ok(result);
 
 
@@ -61,13 +62,23 @@ public class DebtController : ControllerBase
     public async Task<ActionResult> CriandoDebt([FromBody] DebtRequest debtRequest)
     {
 
-
+        var debtValidation = new DebtValidation();
+        await debtValidation.ValidateAndThrowAsync(debtRequest);
         Debt debt1 = new Debt();
+        
+     
         debt1.Amount = debtRequest.Amount;
         debt1.CreationDate = DateTime.Now;
         debt1.Debtor = new Debtor(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
         debt1.DueDate = debt1.DueDate;
-        var validationResult = new DebtValidation().ValidateAndThrowAsync(debtRequest);
+        Debtor debtor = new(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
+        
+       
+     
+            
+
+        debtor.Debt = debt1;
+
         repositoryDebt.Add(debt1);
         
         

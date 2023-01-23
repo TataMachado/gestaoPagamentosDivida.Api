@@ -28,19 +28,24 @@ namespace gestaoPagantoDivida.Repository
       
         List<Debt> IRepositoryDebt .GetAll()
         {
-            return _sqlDatabaseContext.Debts.ToList();
+            return _sqlDatabaseContext.Debts.Include(x=>x.Debtor).Include(x=>x.Payments). ToList();
+
+
         }
 
-       public Debt GetAll(Guid Id )
+        public Task<Debt> GetAll(Guid Id)
         {
-            return _sqlDatabaseContext.Debts.FirstOrDefault(x => x.Id == Id);
+            return _sqlDatabaseContext.Debts.FirstOrDefaultAsync(x => x.Id == Id);
         }
 
-        public List<Debt> DeleteDebitsId(Guid id)
+        public Task <Debt> DeleteDebitsId(Guid Id)
         {
-            return _sqlDatabaseContext.Debts.Where(x => x.Id == id).ToList();
+            return _sqlDatabaseContext.Debts.Where(x => x.Id == Id).FirstOrDefaultAsync(x=>x.Id==Id);
         }
+                public List<Debt> GetId(Guid Id)
+        {
 
-        
+            return _sqlDatabaseContext.Debts.Where(x => x.Id == Id).ToList();
+        }
     }
-}
+    }

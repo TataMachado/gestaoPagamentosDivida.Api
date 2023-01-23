@@ -29,6 +29,11 @@ namespace gestaoPagamentosDivida.Api.Validator
             }return debt.Amount;
         }
 
+        public object Validate(decimal amount, string name, string document)
+        {
+            throw new NotImplementedException();
+        }
+
         int IComparable<DebtRequest>.CompareTo(DebtRequest? debt)
         {
             return debt.Amount.CompareTo(debt.Amount);

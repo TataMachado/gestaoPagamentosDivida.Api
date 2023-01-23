@@ -17,7 +17,7 @@ namespace gestaoPagamentoDivida.Domain.Models
         [JsonIgnore]
         public Debt Debt { get; set; }
         
-       public Payment Payment { get; set; }
+     
 
 
 
@@ -36,7 +36,7 @@ namespace gestaoPagamentoDivida.Domain.Models
             
 
         }
-
+      
     }
     
 }

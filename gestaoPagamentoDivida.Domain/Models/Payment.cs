@@ -8,8 +8,8 @@ namespace gestaoPagamentoDivida.Domain.entity
     {
         public decimal Amount_payment { get; set; }
         public DateTime Date_payment { get; set; }
-        
-        public Debt Debt { get; set; } 
+        [JsonIgnore]
+        public Debt Debt { get; set; }
         
 
         public Payment()
