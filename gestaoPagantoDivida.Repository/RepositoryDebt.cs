@@ -40,9 +40,12 @@ namespace gestaoPagantoDivida.Repository
 
         public Task <Debt> DeleteDebitsId(Guid Id)
         {
-            return _sqlDatabaseContext.Debts.Where(x => x.Id == Id).FirstOrDefaultAsync(x=>x.Id==Id);
-        }
-                public List<Debt> GetId(Guid Id)
+            var debt= _sqlDatabaseContext.Debts.Where(x => x.Id == Id).FirstOrDefaultAsync(x=>x.Id==Id).Result;
+            _sqlDatabaseContext.Debts.Remove(debt);
+            _sqlDatabaseContext.SaveChanges();
+            return Task.FromResult(debt);
+                 }  
+        public List<Debt> GetId(Guid Id)
         {
 
             return _sqlDatabaseContext.Debts.Where(x => x.Id == Id).ToList();

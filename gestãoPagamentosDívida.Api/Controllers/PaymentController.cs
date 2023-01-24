@@ -26,17 +26,17 @@ namespace gestaoPagamentosDivida.Api.Controllers
             var result = repositoryPayment.GetAll();
             return Ok(result);
         }
-        [HttpGet("/{Id}")]
-        public async  Task<ActionResult> IndexId(Guid Id)
+        [HttpGet("{Id}")]
+        public async  Task<ActionResult>  IndexId([FromRoute] Guid Id)
         {
-            var result = repositoryPayment.GetAllId(Id);
+            var result = await repositoryPayment.GetAll(Id);
             return Ok(result);
         }
-        [HttpDelete("/{Id}")]
+        [HttpDelete("{Id}")]
         public async Task <ActionResult> Deletar(Guid Id)
         {
             var rsult = repositoryPayment.DeleteId( Id);
-            return Ok(rsult);   
+            return Ok("Excluido com sucesso");   
         }
        [HttpPost("Payment/{Id}")]
         public async Task<ActionResult> CriandoPayment([FromRoute]Guid Id, PaymentRequest paymentRequset)

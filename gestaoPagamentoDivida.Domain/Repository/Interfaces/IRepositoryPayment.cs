@@ -12,8 +12,8 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
        
        
         public List<Payment> GetAll();
-       public Payment GetAllId(Guid Id);
-        public Task<Payment> GetId(Guid Id);
+       public Task< Payment> GetAll(Guid Id);
+        
         public Task<Payment> DeleteId(Guid Id);
  
 

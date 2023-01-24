@@ -52,7 +52,7 @@ public class DebtController : ControllerBase
     public async Task<ActionResult> Deletar([FromRoute] Guid Id)
     {
         var  result =  repositoryDebt.DeleteDebitsId(Id);
-        return Ok(result);
+        return Ok("Excluido com sucesso");
 
 
     }

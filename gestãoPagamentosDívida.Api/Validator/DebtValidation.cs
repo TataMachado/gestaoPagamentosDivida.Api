@@ -34,6 +34,11 @@ namespace gestaoPagamentosDivida.Api.Validator
             throw new NotImplementedException();
         }
 
+        public object Validate(DebtorRequest request)
+        {
+            throw new NotImplementedException();
+        }
+
         int IComparable<DebtRequest>.CompareTo(DebtRequest? debt)
         {
             return debt.Amount.CompareTo(debt.Amount);
