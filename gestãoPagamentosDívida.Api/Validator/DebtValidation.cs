@@ -11,8 +11,9 @@ namespace gestaoPagamentosDivida.Api.Validator
         {
             RuleFor(debt => debt.Amount).NotEmpty().WithMessage("O numero precisa ser maior que zero");
             RuleFor(debt => debt.Amount).GreaterThanOrEqualTo(debt => debt.Amount);
-            RuleFor(debt => debt.Debtor.Name).NotEmpty().MinimumLength(4).WithMessage("O nome não pode se nulo").MinimumLength(5);
-            RuleFor(debt => debt.Debtor.Document).NotEmpty().WithMessage("O documento não pode ser nulo");
+            RuleForEach(debtor => debtor.Debtor).NotEmpty().SetValidator(new DebtorValidation());
+
+
         }
 
 

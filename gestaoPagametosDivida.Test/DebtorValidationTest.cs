@@ -13,18 +13,24 @@ namespace gestaoPagametosDivida.Test
 {
     public class DebtorValidationTest
     {
-        private DebtValidation validations = new();
-        private readonly Fixture _fixture = new();
+        private DebtorValidation validations = new();
+        
 
         [Fact]
         public void Validador_dadoUmNomeInavalido_deveDarErro()
         {
-            var request = _fixture.Build<DebtRequest>()
-                .With(x=>x.Debtor.Name, "")
-                .Create();
+            var request = new DebtorRequest() { Name="", Document="" } ;
+
+            var result = validations.Validate(request);
+            Assert.False(result.IsValid);
+
+        }
+        [Fact]
+        public void Validador_dadoUmNomeaValido_deveDarSucesso()
+        {
+            var request = new DebtorRequest() { Name="Seu nome", Document="Documenr" };
             var result = validations.Validate(request);
             Assert.True(result.IsValid);
-
         }
     }
 }
