@@ -11,7 +11,7 @@ namespace gestaoPagamentosDivida.Api.Validator
         {
             RuleFor(debt => debt.Amount).NotEmpty().WithMessage("O numero precisa ser maior que zero");
             RuleFor(debt => debt.Amount).GreaterThanOrEqualTo(debt => debt.Amount);
-            RuleForEach(debtor => debtor.Debtor).NotEmpty().SetValidator(new DebtorValidation());
+            RuleFor(debt => debt.Debtor).NotEmpty().SetValidator(new DebtorValidation()) ;
 
 
         }
@@ -30,15 +30,9 @@ namespace gestaoPagamentosDivida.Api.Validator
             }return debt.Amount;
         }
 
-        public object Validate(decimal amount, string name, string document)
-        {
-            throw new NotImplementedException();
-        }
+       
 
-        public object Validate(DebtorRequest request)
-        {
-            throw new NotImplementedException();
-        }
+       
 
         int IComparable<DebtRequest>.CompareTo(DebtRequest? debt)
         {

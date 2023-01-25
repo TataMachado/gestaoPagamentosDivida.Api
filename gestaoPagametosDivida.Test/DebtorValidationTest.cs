@@ -14,14 +14,14 @@ namespace gestaoPagametosDivida.Test
     public class DebtorValidationTest
     {
         private DebtorValidation validations = new();
-        
 
         [Fact]
         public void Validador_dadoUmNomeInavalido_deveDarErro()
         {
-            var request = new DebtorRequest() { Name="", Document="" } ;
+            
+                var request = new DebtorRequest() { Name = "", Document = "" };
 
-            var result = validations.Validate(request);
+                var result = validations.Validate(request);
             Assert.False(result.IsValid);
 
         }
