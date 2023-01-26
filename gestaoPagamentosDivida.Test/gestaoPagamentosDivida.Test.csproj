@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+    <PackageReference Include="Moq" Version="4.18.4" />
+    <PackageReference Include="xunit.assert" Version="2.4.2" />
+    <PackageReference Include="xunit.extensibility.core" Version="2.4.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\gestaoPagamentoDivida.Domain\gestaoPagamentoDivida.Domain.csproj" />
+    <ProjectReference Include="..\gestãoPagamentosDívida.Api\gestaoPagamentosDivida.Api.csproj" />
+  </ItemGroup>
+
+</Project>

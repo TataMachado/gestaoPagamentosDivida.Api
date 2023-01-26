@@ -1,5 +1,5 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
-using gestaoPagamentoDivida.Domain.entitys;
+using gestaoPagamentoDivida.Domain;
 using gestaoPagamentoDivida.Domain.Models;
 using gestaoPagantoDivida.Repository;
 using gestaoPagantoDivida.Repository.Mappings;
@@ -13,10 +13,9 @@ using System.Threading.Tasks;
 namespace gestaoPagantoDivida.Repository
 {
     public class SqlDatabaseContext : DbContext
-    {
-
+    { 
       
-        public DbSet<gestaoPagamentoDivida.Domain.entitys.Debt> Debt { get; set; }
+        public DbSet<gestaoPagamentoDivida.Domain.Debt> Debts { get; set; }     
         public DbSet<Payment> Payment { get; set; }
         public DbSet<gestaoPagamentoDivida.Domain.Models.Debtor> Debtors { get; set; }
         public SqlDatabaseContext(DbContextOptions<SqlDatabaseContext> options):base(options) { }

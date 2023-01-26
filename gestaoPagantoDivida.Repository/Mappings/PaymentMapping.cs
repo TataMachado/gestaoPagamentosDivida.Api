@@ -1,4 +1,6 @@
 ﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain;
+using gestaoPagamentoDivida.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -16,8 +18,10 @@ namespace gestaoPagantoDivida.Repository.Mappings
         {
             builder.ToTable(nameof(Payment));
             builder.HasKey(x => x.Id);  
-            builder.Property(x=>x.Amount_payment).HasColumnType("decimal");
-            builder.Property(x => x.Payment_date).HasColumnType("dateTime2(7)");
+            builder.Property(x=>x.amount).HasColumnType("decimal");
+            builder.Property(x => x.date).HasColumnType("dateTime2(7)");
+            builder.HasOne(x => x.Debt).WithMany(x => x.Payments);
+
         }
     }
 }

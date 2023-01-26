@@ -1,15 +1,27 @@
-﻿using gestaoPagamentoDivida.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.Models;
+using System.Text.Json.Serialization;
 
 namespace gestaoPagamentoDivida.Domain.entity
 {
     public class Payment: Entity
     {
-        public double Amount_payment { get; set; }
-        public DateTime Payment_date { get; set; }
+        public decimal amount { get; set; }
+        public DateTime date { get; set; }
+        [JsonIgnore]
+        public Debt Debt { get; set; }
+        
+
+        public Payment()
+        {
+                
+        }
+      
+        public Payment(decimal amount, DateTime date)
+        {
+            this.amount = amount;
+            this.date = date;
+           
+        }
     }
 }

@@ -31,9 +31,9 @@ namespace gestaoPagantoDivida.Repository
             return sqlDatabaseContext.Set<TEntity>().Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IEnumerable<TEntity> IDebitRepository(Guid id)
         {
-            return sqlDatabaseContext.Set<TEntity>().ToList();
+            throw new NotImplementedException();
         }
 
         public void Remove(TEntity obj)
