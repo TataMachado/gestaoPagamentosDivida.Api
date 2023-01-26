@@ -11,32 +11,18 @@ namespace gestaoPagamentoDivida.Domain.Models
 {
     public class Debtor: Entity
     {
-        
         public string Name { get; set; }
         public string Document { get; set;}
         [JsonIgnore]
         public Debt Debt { get; set; }
-        
-     
-
-
-
         public Debtor()
         {
 
         }
-       
-
         public Debtor(string name, string document) { 
             Name = name;    
-            Document = document;
-            
-            
-            
-            
+            Document = document;   
 
         }
-      
-    }
-    
+    }  
 }

@@ -1,7 +1,5 @@
 
-
 using AutoFixture;
-using gestaoPagamentoDivida.Domain;
 using gestaoPagamentosDivida.Api.Requests;
 using gestaoPagamentosDivida.Api.Validator;
 

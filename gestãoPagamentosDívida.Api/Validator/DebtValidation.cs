@@ -11,14 +11,8 @@ namespace gestaoPagamentosDivida.Api.Validator
         {
             RuleFor(debt => debt.Amount).NotEmpty().WithMessage("O numero precisa ser maior que zero");
             RuleFor(debt => debt.Amount).GreaterThanOrEqualTo(debt => debt.Amount);
-            RuleFor(debt => debt.Debtor).NotEmpty().SetValidator(new DebtorValidation()) ;
-
-
+            RuleFor(debt => debt.Debtor).NotEmpty().SetValidator(new DebtorValidation());
         }
-
-
-      
-     
        
             public decimal CompareTo(DebtRequest debt)
         {

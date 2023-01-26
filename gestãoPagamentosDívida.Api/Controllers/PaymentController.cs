@@ -29,7 +29,7 @@ namespace gestaoPagamentosDivida.Api.Controllers
         [HttpGet("{Id}")]
         public async  Task<ActionResult>  IndexId([FromRoute] Guid Id)
         {
-            var result = await repositoryPayment.GetAll(Id);
+            var result = await repositoryPayment.GetPayment(Id);
             return Ok(result);
         }
         [HttpDelete("{Id}")]
@@ -47,13 +47,13 @@ namespace gestaoPagamentosDivida.Api.Controllers
             Payment payment1=new Payment();
 
           
-           payment1.Amount_payment = paymentRequset.Amount_payment;
+           payment1.amount = paymentRequset.Amount_payment;
             
 
 
-            var debt=await repositoryDebt.GetAll(Id);
+            var debt=await repositoryDebt.GetDebt(Id);
             
-            debt.CalcularDivida(payment1.Amount_payment);
+            debt.CalcularDivida(payment1.amount);
             payment1.Debt = debt;
 
 

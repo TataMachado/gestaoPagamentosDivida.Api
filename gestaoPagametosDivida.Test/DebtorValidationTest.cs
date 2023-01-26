@@ -20,9 +20,8 @@ namespace gestaoPagametosDivida.Test
         {
             
                 var request = new DebtorRequest() { Name = "", Document = "" };
-
                 var result = validations.Validate(request);
-            Assert.False(result.IsValid);
+                Assert.False(result.IsValid);
 
         }
         [Fact]

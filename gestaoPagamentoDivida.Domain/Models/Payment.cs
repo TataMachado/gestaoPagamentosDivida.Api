@@ -6,8 +6,8 @@ namespace gestaoPagamentoDivida.Domain.entity
 {
     public class Payment: Entity
     {
-        public decimal Amount_payment { get; set; }
-        public DateTime Date_payment { get; set; }
+        public decimal amount { get; set; }
+        public DateTime date { get; set; }
         [JsonIgnore]
         public Debt Debt { get; set; }
         
@@ -17,10 +17,10 @@ namespace gestaoPagamentoDivida.Domain.entity
                 
         }
       
-        public Payment(decimal amount_payment, DateTime date_payment)
+        public Payment(decimal amount, DateTime date)
         {
-            Amount_payment = amount_payment;
-            Date_payment = date_payment;
+            this.amount = amount;
+            this.date = date;
            
         }
     }

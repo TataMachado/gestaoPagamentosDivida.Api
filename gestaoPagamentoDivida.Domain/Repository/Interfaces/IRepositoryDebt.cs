@@ -13,7 +13,7 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
       //  Task ValidateAndThrowAsync(Debt debt, object debt1);
         List<Debt> GetAll();
         Task<Debt> DeleteDebitsId(Guid Id);
-        Task<Debt>  GetAll(Guid Id);
+        Task<Debt>  GetDebt(Guid Id);
         List<Debt> GetId(Guid Id);
     }
 }

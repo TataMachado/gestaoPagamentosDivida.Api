@@ -25,11 +25,9 @@ void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
 
-   //builder.Services.AddScoped<IValidator<gestaoPagamentoDivida.Domain.Models.Debtor>, DebtorValidation>();
+   
     builder.Services.AddControllers().AddFluentValidation();
-    // builder.Services.AddTransient<IValidator <gestaoPagamentoDivida.Domain.Debt>,DebtContract>();
-
-    
+    builder.Services.AddTransient<IValidator <DebtorRequest>,DebtorValidation>();
     builder.Services.AddScoped<IValidator<PaymentRequest>,PaymentValidation> ();
     builder.Services.AddTransient<IValidator< DebtRequest >,DebtValidation> ();
 
@@ -39,10 +37,6 @@ void ConfigureServices(IServiceCollection services)
 
 
 
-   // services.AddValidatorsFromAssemblyContaining<DebtorValidation>();
-    //services.AddValidatorsFromAssemblyContaining<PaymentValidation>();
-    //services.AddValidatorsFromAssemblyContaining<gestaoPagamentoDivida.Domain.Models.Validators.DebtValidation>();
-    
 
 }
 
@@ -52,7 +46,6 @@ builder.Services.AddScoped<IRepositoryPayment, RepositoryPayment>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

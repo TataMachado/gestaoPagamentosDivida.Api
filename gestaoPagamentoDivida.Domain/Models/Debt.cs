@@ -6,7 +6,7 @@ namespace gestaoPagamentoDivida.Domain
 {
     public class Debt: Entity
     {
-        private decimal amount_payment;
+     
 
         public decimal Amount  { get; set; }
 
@@ -19,9 +19,7 @@ namespace gestaoPagamentoDivida.Domain
           
        
         public Debt()
-        {
-
-        }
+        { }
 
         public Debt(decimal amont, DateTime dueDate, Models.Debtor debtor)
         {
@@ -31,14 +29,10 @@ namespace gestaoPagamentoDivida.Domain
             
         }
 
-        public Debt(decimal amount_payment)
+     
+        public decimal CalcularDivida(decimal amountPayment)
         {
-            this.amount_payment = amount_payment;
-        }
-
-        public decimal CalcularDivida(decimal Amount_payment)
-        {
-            return Amount -= Amount_payment;
+            return Amount -= amountPayment;
         }
 
     }

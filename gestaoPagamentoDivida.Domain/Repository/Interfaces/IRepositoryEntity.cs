@@ -12,7 +12,7 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
         void Add(TEntity obj);
         void Update(TEntity obj);
         void Remove(TEntity obj);
-        IEnumerable<TEntity> GetAllDebitsId(Guid id);
+        IEnumerable<TEntity> IDebitRepository(Guid id);
         TEntity entityGet(string id);
         
     }
