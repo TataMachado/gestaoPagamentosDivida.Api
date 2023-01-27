@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gestaoPagamentoDivida.Domain.entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,8 @@ namespace gestaoPagamentoDivida.Domain.Repository.Interfaces
         void Add(TEntity obj);
         void Update(TEntity obj);
         void Remove(TEntity obj);
-        IEnumerable<TEntity> GetAll();
+        IEnumerable<TEntity> IDebitRepository(Guid id);
         TEntity entityGet(string id);
+        
     }
 }
