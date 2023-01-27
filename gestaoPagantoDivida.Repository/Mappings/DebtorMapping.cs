@@ -20,7 +20,7 @@ namespace gestaoPagantoDivida.Repository.Mappings
             builder.Property(x=>x.Document).HasColumnType("string");
             builder.HasOne(x => x.Debt).WithOne(x=>x.Debtor)
                 .HasForeignKey<Debtor>(x=>x.Id)
-                .HasConstraintName("FKDebtId");
+                .HasConstraintName("DebtId");
         }
     }
 }

@@ -1,16 +1,12 @@
 using FluentValidation;
-using gestaoPagamentoDivida.Domain;
-using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.entitys;
 using gestaoPagamentoDivida.Domain.Models;
+using gestaoPagamentoDivida.Domain.Models.Validators;
 using gestaoPagamentoDivida.Domain.Repository.Interfaces;
-using gestaoPagamentosDivida.Api.Requests;
-using gestaoPagamentosDivida.Api.Validator;
-using gestaoPagantoDivida.Repository;
+using gestaoPagamentosDivida.Domain.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures.Buffers;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
-using System.Numerics;
+using Microsoft.EntityFrameworkCore.Migrations;
+
 
 namespace gestãoPagamentosDívida.Api.Controllers;
 
@@ -19,13 +15,13 @@ namespace gestãoPagamentosDívida.Api.Controllers;
 public class DebtController : ControllerBase
 {
     private readonly IRepositoryDebt repositoryDebt;
-    private readonly IRepositoryPayment repositoryPayment;
 
 
-    public DebtController(IRepositoryDebt repositoryDebt, IRepositoryPayment repositoryPayment)
+    public DebtController(IRepositoryDebt repositoryDebt)
     {
         this.repositoryDebt = repositoryDebt;
-        this.repositoryPayment = repositoryPayment;
+
+
     }
 
     [HttpGet]
@@ -38,58 +34,41 @@ public class DebtController : ControllerBase
         return Ok(Result);
 
     }
-    [HttpGet("{Id}")]
-    public async Task<ActionResult> IndexId([FromRoute] Guid Id)
+    [HttpGet("Id")]
+    public async Task<ActionResult> IndexId(string Id)
     {
-        var Result = repositoryDebt.GetId(Id);
-        
-      
+
+        var Result = repositoryDebt.entityGet(Id);
         return Ok(Result);
     }
 
-    
-    [HttpDelete("/Debt/{Id}")]
-    public async Task<ActionResult> Deletar([FromRoute] Guid Id)
-    {
-        var  result =  repositoryDebt.DeleteDebitsId(Id);
-        return Ok("Excluido com sucesso");
 
+
+    [HttpDelete("/Debt/{Id}")]
+    public async Task<ActionResult> Deletar( [FromRoute] string id)
+    {
+
+        return Ok();
+        
 
     }
-    
 
     [HttpPost]
-    public async Task<ActionResult> CriandoDebt([FromBody] DebtRequest debtRequest)
+    public async Task<ActionResult> CriandoDebt([FromBody] Debt debt)
     {
-
-        var debtValidation = new DebtValidation();
-        await debtValidation.ValidateAndThrowAsync(debtRequest);
-        Debt debt1 = new Debt();
         
-     
-        debt1.Amount = debtRequest.Amount;
-        debt1.CreationDate = DateTime.Now;
-        debt1.Debtor = new Debtor(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
-        debt1.DueDate = debt1.DueDate;
-        Debtor debtor = new(debtRequest.Debtor.Name, debtRequest.Debtor.Document);
         
-       
-     
+            //var validationResult = new DebtValidation().ValidateAndThrowAsync(contract );
             
 
-        debtor.Debt = debt1;
+             repositoryDebt.Add(debt);
+            return Ok(debt);
 
-        repositoryDebt.Add(debt1);
+
         
-        
-                                                                                                     
-        
-        return Ok(debt1);
+       
 
 
 
     }
-
 }
-
-    
