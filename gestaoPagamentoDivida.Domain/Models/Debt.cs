@@ -1,0 +1,39 @@
+﻿using gestaoPagamentoDivida.Domain.entity;
+using gestaoPagamentoDivida.Domain.Models;
+using System.Text.Json.Serialization;
+
+namespace gestaoPagamentoDivida.Domain
+{
+    public class Debt: Entity
+    {
+     
+
+        public decimal Amount  { get; set; }
+
+        public DateTime DueDate { get; set; }
+        public Models.Debtor Debtor { get; set; }
+        public DateTime CreationDate { get; set; }
+        
+        public List<Payment> Payments { get; set; }
+      
+          
+       
+        public Debt()
+        { }
+
+        public Debt(decimal amont, DateTime dueDate, Models.Debtor debtor)
+        {
+            Amount= amont;
+            DueDate= dueDate;   
+            debtor = debtor; 
+            
+        }
+
+     
+        public decimal CalcularDivida(decimal amountPayment)
+        {
+            return Amount -= amountPayment;
+        }
+
+    }
+}
